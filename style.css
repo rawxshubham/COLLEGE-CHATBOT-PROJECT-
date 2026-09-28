@@ -1,192 +1,538 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+
+  /* Background Image */
+  background:
+    linear-gradient(
+      rgba(20, 25, 60, 0.45),
+      rgba(20, 25, 60, 0.45)
+    ),
+    url("bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
 }
+
+
+/* ============================= */
+/* UNIVERSITY TOP HEADER */
+/* ============================= */
+
 .page-header {
+  width: 100%;
+  min-height: 85px;
+
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  background: rgba(255,255,255,0.15);
-  padding: 15px 30px;
-  border-radius: 16px;
+  justify-content: center;
+
+  gap: 18px;
+
+  background: rgba(35, 45, 100, 0.72);
+
+  padding: 12px 30px;
+
+  border-radius: 0 0 14px 14px;
+
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.30);
+
+  position: relative;
+  z-index: 10;
 }
+
+
+/* University Logo */
+
 .page-header img {
-  height: 55px;
-  width: 55px;
+  height: 58px;
+  width: 58px;
+
+  object-fit: contain;
+
   border-radius: 50%;
+
   background: white;
+
   padding: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+  flex-shrink: 0;
 }
+
+
+/* University Name */
+
 .page-header h1 {
   color: white;
-  font-size: 22px;
+
+  font-size: 26px;
   font-weight: 700;
+
   margin: 0;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  letter-spacing: 0.5px;
+
+  text-align: center;
+
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.45);
+
+  letter-spacing: 0.4px;
+
+  line-height: 1.2;
 }
+
+
+/* ============================= */
+/* CHATBOT CONTAINER */
+/* ============================= */
+
 .chat-container {
   width: 380px;
   height: 560px;
+
   background: #ffffff;
+
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+
   display: flex;
   flex-direction: column;
+
   overflow: hidden;
+
+  margin-top: 25px;
+
+  margin-bottom: 25px;
+
+  position: relative;
+  z-index: 5;
 }
+
+
+/* ============================= */
+/* CHAT HEADER */
+/* ============================= */
+
 .chat-header {
-  background: linear-gradient(135deg, #4a90e2, #357abd);
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #357abd
+  );
+
   color: white;
+
   padding: 18px;
+
   font-weight: 600;
   font-size: 17px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+
+/* Chatbot Logo */
+
 .chat-header img {
   height: 32px;
   width: 32px;
+
   border-radius: 50%;
+
   margin-right: 10px;
+
   background: white;
+
   padding: 2px;
+
+  object-fit: contain;
 }
+
+
+/* Chatbot Name */
+
 .chat-header span {
   flex: 1;
 }
+
+
+/* Clear Button */
+
 #clear-btn {
   background: none;
+
   border: none;
+
   cursor: pointer;
+
   font-size: 16px;
+
   opacity: 0.85;
+
+  color: white;
 }
+
 #clear-btn:hover {
   opacity: 1;
 }
+
+
+/* ============================= */
+/* CHAT MESSAGES */
+/* ============================= */
+
 .chat-messages {
   flex: 1;
+
   padding: 15px;
+
   overflow-y: auto;
+
   background: #f7f8fc;
+
   display: flex;
   flex-direction: column;
 }
+
+
+/* Message Row */
+
 .msg-row {
   display: flex;
+
   align-items: flex-end;
+
   margin: 8px 0;
+
   animation: fadeIn 0.3s ease;
 }
+
+
 .msg-row.user {
   justify-content: flex-end;
 }
+
+
+/* ============================= */
+/* BOT AVATAR */
+/* ============================= */
+
 .bot-avatar {
   width: 30px;
   height: 30px;
+
   border-radius: 50%;
-  background: linear-gradient(135deg, #43cea2, #185a9d);
+
+  background: linear-gradient(
+    135deg,
+    #43cea2,
+    #185a9d
+  );
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin-right: 8px;
+
   flex-shrink: 0;
+
   font-size: 16px;
 }
+
+
+/* ============================= */
+/* MESSAGE BUBBLE */
+/* ============================= */
+
 .bubble-wrap {
   display: flex;
+
   flex-direction: column;
+
   max-width: 70%;
 }
+
+
 .bubble-wrap.user {
   align-items: flex-end;
 }
+
+
 .bubble-wrap.bot {
   align-items: flex-start;
 }
+
+
 .bubble {
   padding: 10px 15px;
+
   border-radius: 18px;
+
   font-size: 14px;
+
   line-height: 1.4;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+
+/* User Message */
+
 .user-msg {
-  background: linear-gradient(135deg, #4a90e2, #357abd);
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #357abd
+  );
+
   color: white;
+
   border-bottom-right-radius: 4px;
 }
+
+
+/* Bot Message */
+
 .bot-msg {
   background: white;
+
   color: #333;
+
   border-bottom-left-radius: 4px;
 }
+
+
+/* Message Time */
+
 .msg-time {
   font-size: 10px;
+
   color: #999;
+
   margin-top: 3px;
+
   padding: 0 4px;
 }
+
+
+/* ============================= */
+/* TYPING ANIMATION */
+/* ============================= */
+
 .typing span {
   display: inline-block;
+
   width: 6px;
   height: 6px;
+
   margin-right: 3px;
+
   background: #999;
+
   border-radius: 50%;
+
   animation: blink 1.2s infinite ease-in-out;
 }
-.typing span:nth-child(2) { animation-delay: 0.2s; }
-.typing span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes blink {
-  0%, 80%, 100% { opacity: 0.3; }
-  40% { opacity: 1; }
+
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
 }
+
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+
+@keyframes blink {
+
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+
+  40% {
+    opacity: 1;
+  }
+}
+
+
+/* ============================= */
+/* CHAT INPUT */
+/* ============================= */
+
 .chat-input {
   display: flex;
+
   padding: 12px;
+
   border-top: 1px solid #eee;
+
   background: white;
 }
+
+
+/* Input Box */
+
 .chat-input input {
   flex: 1;
+
   padding: 12px 15px;
+
   border: 1px solid #ddd;
+
   border-radius: 25px;
+
   outline: none;
+
   font-size: 14px;
 }
+
+
 .chat-input input:focus {
   border-color: #4a90e2;
+
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.10);
 }
+
+
+/* Send Button */
+
 .chat-input button {
   padding: 10px 20px;
+
   margin-left: 8px;
-  background: linear-gradient(135deg, #4a90e2, #357abd);
+
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #357abd
+  );
+
   color: white;
+
   border: none;
+
   border-radius: 25px;
+
   cursor: pointer;
+
   font-weight: 600;
-  transition: transform 0.15s ease;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
+
+
 .chat-input button:hover {
   transform: scale(1.05);
+
+  box-shadow:
+    0 5px 12px rgba(53, 122, 189, 0.30);
 }
+
+
+/* ============================= */
+/* FADE ANIMATION */
+/* ============================= */
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  .page-header {
+    min-height: 75px;
+
+    padding: 10px 15px;
+
+    gap: 10px;
+  }
+
+
+  .page-header img {
+    width: 48px;
+    height: 48px;
+  }
+
+
+  .page-header h1 {
+    font-size: 18px;
+  }
+
+
+  .chat-container {
+    width: calc(100% - 25px);
+
+    height: calc(100vh - 110px);
+
+    margin-top: 18px;
+
+    border-radius: 18px;
+  }
+}
+
+
+/* Very Small Screens */
+
+@media (max-width: 400px) {
+
+  .page-header h1 {
+    font-size: 16px;
+  }
+
+
+  .page-header img {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .chat-container {
+    width: calc(100% - 16px);
+  }
 }
